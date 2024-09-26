@@ -1,0 +1,26 @@
+{
+  "name": "restapi.wastu.digital",
+  "version": "1.0.0",
+  "description": "rest-api for simak wastu digital, build on nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainerhosch/restapi.wastu.digital.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "nodejs",
+    "mysql",
+    "express"
+  ],
+  "author": "Rizky Oktan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rainerhosch/restapi.wastu.digital/issues"
+  },
+  "homepage": "https://github.com/rainerhosch/restapi.wastu.digital#readme"
+}
