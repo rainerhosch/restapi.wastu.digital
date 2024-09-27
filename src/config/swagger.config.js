@@ -7,7 +7,7 @@ const swaggerDocument = require('../doc/swagger-output.json')
 const uiOpts = {
     customSiteTitle: "API Wastu Digital",
     customCss: '.swagger-ui .topbar { display: none }',
-    customfavIcon: "/public/img/favicon.ico"
+    customfavIcon: "https://raw.githubusercontent.com/rainerhosch/restapi.wastu.digital/refs/heads/main/public/img/favicon.ico?token=GHSAT0AAAAAACX372M6E4VNUNC74LD5W3JOZXWC6LA"
     // customfavIcon: "/public/img/favicon-32x32.png"
 };
 function swaggerDocs(app, port) {
