@@ -1,0 +1,236 @@
+const swaggerJsdoc = require("swagger-jsdoc");
+
+// swagger options for API documention
+const swaggerDefinition  = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            version: "1.0.0",
+            title: "WASTUDIG REST API",
+            description: "API endpoints for Wastu Digital services",
+            contact: {
+                name: "Rizky Oktan",
+                email: "rizkyoktan@wastukancana.ac.id",
+                url: "https://www.rzoktan.tech/"
+            }
+        },
+        servers: [
+            {
+                url: "http://localhost:3000/",
+                description: "Local server"
+            },
+            {
+                url: "https://api.wastu.digital",
+                description: "Live server"
+            }
+        ],
+        basePath: "/",
+        securityDefinitions: {
+            bearerAuth: {
+                type: 'apiKey',
+                name: 'Authorization',
+                scheme: 'bearer',
+                in: 'header',
+            },
+        },
+        paths: {
+            "/get-token": {
+                "post": {
+                    "description": "Authentication for getting bearer token",
+                    "responses": {
+                        "200": {
+                            "description": "OK"
+                        },
+                        "401": {
+                            "description": "Unauthorized"
+                        }
+                    },
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "username": {
+                                            "example": "any"
+                                        },
+                                        "password": {
+                                            "example": "any"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": ["Auth"] // Menambahkan tag untuk path ini
+                }
+            },
+            "/api/v1/mahasiswa/{id}": {
+                "get": {
+                    "description": "",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "required": true,
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        // {
+                        //     "name": "Authorization",
+                        //     "in": "header",
+                        //     // "required": true,
+                        //     "schema": {
+                        //         "type": "string",
+                        //         "example": "Bearer <token>"
+                        //     }
+                        // }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "OK"
+                        },
+                        "401": {
+                            "description": "Unauthorized"
+                        },
+                        "403": {
+                            "description": "Forbidden"
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        },
+                        "500": {
+                            "description": "Internal Server Error"
+                        }
+                    },
+                    "security": [
+                        {
+                            "BearerAuth": {
+                                "type": "http",
+                                "scheme": "bearer",
+                            }
+                        }
+                    ],
+                    "tags": ["Mahasiswa"],
+                },
+                "put": {
+                    "description": "",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "required": true,
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "authorization",
+                            "in": "authorization",
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "OK"
+                        },
+                        "400": {
+                            "description": "Bad Request"
+                        },
+                        "401": {
+                            "description": "Unauthorized"
+                        },
+                        "403": {
+                            "description": "Forbidden"
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        },
+                        "500": {
+                            "description": "Internal Server Error"
+                        }
+                    },
+                    "security": [
+                        {
+                            "BearerAuth": {
+                                "type": "http",
+                                "scheme": "bearer",
+                            }
+                        }
+                    ],
+                    "tags": ["Mahasiswa"]
+                },
+                "delete": {
+                    "description": "",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "required": true,
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "authorization",
+                            "in": "authorization",
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "OK"
+                        },
+                        "401": {
+                            "description": "Unauthorized"
+                        },
+                        "403": {
+                            "description": "Forbidden"
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        },
+                        "500": {
+                            "description": "Internal Server Error"
+                        }
+                    },
+                    "security": [
+                        {
+                            "BearerAuth": {
+                                "type": "http",
+                                "scheme": "bearer",
+                            }
+                        }
+                    ],
+                    "tags": ["Mahasiswa"]
+                }
+            }
+
+        },
+        tags: [
+            { name: "Auth", description: "Getting Bearer Token for Authorization." },
+            { name: "Mahasiswa", description: "Service Mahasiswa" },
+        ],
+        schemes: ["http"],
+        consumes: ["application/json"],
+        produces: ["application/json"],
+    },
+    // components: {
+    //     securitySchemes: {
+    //         BearerAuth: {
+    //             type: "http",
+    //             scheme: "bearer",
+    //         },
+    //     },
+    // },
+    apis: ["../routes/*.js"],
+};
+
+const specs = swaggerJsdoc(options);
+
+module.exports = specs;

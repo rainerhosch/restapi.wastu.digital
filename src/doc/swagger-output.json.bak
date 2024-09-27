@@ -14,28 +14,42 @@
     {
       "url": "http://localhost:3000/",
       "description": "Local server"
+    },
+    {
+      "url": "https://api.wastu.digital",
+      "description": "Live server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "",
+      "description": ""
     }
   ],
   "paths": {
-    "/": {
+    "/api/v1/mahasiswa/": {
       "get": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/get-token": {
+      },
       "post": {
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
           },
-          "401": {
-            "description": "Unauthorized"
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         },
         "requestBody": {
@@ -44,10 +58,16 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "username": {
+                  "id_pd": {
                     "example": "any"
                   },
-                  "password": {
+                  "nama": {
+                    "example": "any"
+                  },
+                  "alamat": {
+                    "example": "any"
+                  },
+                  "email": {
                     "example": "any"
                   }
                 }

@@ -1,0 +1,48 @@
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require('swagger-ui-express');
+
+// swagger options for API documention
+const swaggerDefinition = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            version: '1.0.0',
+            title: 'WASTUDIG REST API',
+            description: 'API endpoints for Wastu Digital services',
+            // contact: {
+            //     name: 'Rizky Oktan',
+            //     email: 'rizkyoktan@wastukancana.ac.id',
+            //     url: 'https://www.rzoktan.tech/'
+            // },
+        },
+        servers: [
+            {
+                url: 'http://localhost:3000/',
+                description: 'Local server'
+            },
+            // {
+            //     url: 'https://api.wastu.digital',
+            //     description: 'Live server'
+            // }
+        ],
+        basePath: "/src/config",
+        securityDefinitions: {
+            bearerAuth: {
+                type: 'apiKey',
+                name: 'Authorization',
+                scheme: 'bearer',
+                in: 'header',
+            },
+        },
+    },
+};
+
+const options = {
+    apis: ['/server.js'],
+    swaggerDefinition: swaggerDefinition.definition,
+}
+
+const specs = swaggerJsdoc(options);
+console.log(specs)
+
+module.exports = { specs, swaggerUi };

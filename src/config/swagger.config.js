@@ -2,22 +2,22 @@
 // const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../doc/swagger-output.json')
+// const { specs, swaggerUi } = require("./swagger");
+// const { specs, swaggerUi } = require("./swagger.doc");
 
 
 const uiOpts = {
     customSiteTitle: "API Wastu Digital",
     customCss: '.swagger-ui .topbar { display: none }',
-    customfavIcon: "https://raw.githubusercontent.com/rainerhosch/restapi.wastu.digital/refs/heads/main/public/img/favicon.ico?token=GHSAT0AAAAAACX372M6E4VNUNC74LD5W3JOZXWC6LA"
+    customfavIcon: "https://raw.githubusercontent.com/rainerhosch/restapi.wastu.digital/refs/heads/main/public/img/favicon.ico",
     // customfavIcon: "/public/img/favicon-32x32.png"
 };
 function swaggerDocs(app, port) {
     
     // Swagger Page
-    app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, uiOpts));
-    // Documentation in JSON format
-    // app.get('../doc/swagger-output.json', (req, res) => {
-    //     res.setHeader('Content-Type', 'application/json');
-    //     res.send(swaggerSpec);
-    // });
+    app.use('/api-docs', 
+        swaggerUi.serve, 
+        swaggerUi.setup(swaggerDocument, uiOpts)
+    );
 }
 module.exports = swaggerDocs;

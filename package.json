@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "gswagger": "node src/utils/swagger-autogen.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "http": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nodemon": "^3.1.7",
