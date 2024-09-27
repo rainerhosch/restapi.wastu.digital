@@ -10,18 +10,21 @@ const port = process.env.PORT || 3000;
 var corsOptions = {
     origin: `http://localhost:${port}`
 };
-// app.use(cors(corsOptions));
+// var favicon = require('serve-favicon');
+// var path = require('path');
+app.use(cors(corsOptions));
 
 //** route */
 const mahasiswaRouter = require('./src/router/mahasiswa.routes');
 
 
 // parse application/json
+// app.use(favicon(path.join(__dirname,'public','img','favicon.ico')));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+ // Start of Selection
 app.get('/', (req, res) => {
-    res.status(201).json("Home GET Request");
+    res.redirect('/docs'); //redirect ke halaman dokumentasi 
 });
 
 // calling routes
