@@ -12,7 +12,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/",
+      "url": "http://localhost:5000/",
       "description": "Local server"
     }
   ],
@@ -27,37 +27,36 @@
         }
       }
     },
-    "/get-token": {
-      "post": {
+    "/api/v1/mahasiswa/list": {
+      "get": {
         "description": "",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
           },
-          "401": {
-            "description": "Unauthorized"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "username": {
-                    "example": "any"
-                  },
-                  "password": {
-                    "example": "any"
-                  }
-                }
-              }
-            }
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/api/v1/mahasiswa/{id}": {
+    "/api/v1/mahasiswa/detail/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -81,7 +80,22 @@
             "description": "Internal Server Error"
           }
         }
-      },
+      }
+    },
+    "/api/v1/mahasiswa/": {
+      "post": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/mahasiswa/{id}": {
       "put": {
         "description": "",
         "parameters": [
@@ -97,9 +111,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "404": {
             "description": "Not Found"
@@ -122,8 +133,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
           },
           "404": {
             "description": "Not Found"
