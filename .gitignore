@@ -1,4 +1,5 @@
 /node_modules
 package-lock.json
+.env-productions
 .env
 /src/config/db.config.js
