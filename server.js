@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 // Login Route
 const user = {
     id: 1,
-    username: 'johnDoe',
+    username: 'psiit',
     password: 'password',
 };
 app.post('/get-token', (req, res) => {
