@@ -3,3 +3,4 @@ package-lock.json
 .env
 /src/config/db.config.js
 /src/doc/swagger-output.json
+.htaccess
