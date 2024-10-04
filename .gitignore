@@ -4,3 +4,5 @@ package-lock.json
 /src/config/db.config.js
 /src/doc/swagger-output.json
 .htaccess
+stderr.log
+tmp
